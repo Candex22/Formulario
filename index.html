@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Equipos - Campeonato LNR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Registro de Equipos</h1>
+        <p style="text-align: center; margin-bottom: 30px;">Campeonato Nacional de Robótica LNR</p>
+
+        <form id="registroForm">
+            <!-- Datos del Equipo -->
+            <div class="form-section">
+                <h2>Datos del Equipo</h2>
+                
+                <div class="form-group">
+                    <label for="nombreEquipo" class="required-label">Nombre del Equipo</label>
+                    <div style="display: flex; align-items: center;">
+                        <input type="text" id="nombreEquipo" name="nombreEquipo" maxlength="30" required>
+                        <span class="success-icon"><i class="fas fa-check-circle"></i></span>
+                        <span class="error-icon"><i class="fas fa-times-circle"></i></span>
+                    </div>
+                    <div class="error-message" id="nombreEquipo-error">El nombre del equipo es obligatorio (máximo 30 caracteres).</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="institucion" class="required-label">Escuela/Institución</label>
+                    <div style="display: flex; align-items: center;">
+                        <select id="institucion" name="institucion" required>
+                            <option value="">Seleccione una opción</option>
+                            <option value="EEST1">EEST N°1 Eduardo Ader</option>
+                            <option value="EEST2">EEST N°2</option>
+                            <option value="EEST3">EEST N°3</option>
+                            <option value="EEST4">EEST N°4</option>
+                            <option value="EEST5">EEST N°5</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                        <span class="success-icon"><i class="fas fa-check-circle"></i></span>
+                        <span class="error-icon"><i class="fas fa-times-circle"></i></span>
+                    </div>
+                    <div id="otroInstitucion" class="hidden">
+                        <input type="text" id="otraInstitucion" name="otraInstitucion" placeholder="Ingrese el nombre de la institución">
+                    </div>
+                    <div class="error-message" id="institucion-error">Debe seleccionar una institución.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="emailResponsable" class="required-label">Email del Responsable</label>
+                    <div style="display: flex; align-items: center;">
+                        <input type="email" id="emailResponsable" name="emailResponsable" required>
+                        <span class="success-icon"><i class="fas fa-check-circle"></i></span>
+                        <span class="error-icon"><i class="fas fa-times-circle"></i></span>
+                    </div>
+                    <div class="error-message" id="emailResponsable-error">Ingrese un email válido (ej: nombre@escuela.edu.ar).</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="fotoEquipo" class="required-label">Foto del Equipo</label>
+                    <label for="fotoEquipo" class="file-upload-label">
+                        <i class="fas fa-upload"></i> Seleccionar foto (JPG/PNG, máx. 2MB)
+                    </label>
+                    <input type="file" id="fotoEquipo" name="fotoEquipo" accept=".jpg,.jpeg,.png" required>
+                    <img id="fotoPreview" class="profile-preview" alt="Vista previa de foto">
+                    <div class="error-message" id="fotoEquipo-error">La foto es obligatoria (JPG/PNG, máx. 2MB).</div>
+                </div>
+            </div>
+
+            <!-- Categorías de Competencia -->
+            <div class="form-section">
+                <h2>Categorías de Competencia</h2>
+                <p>Selecciona las categorías en las que participará tu equipo:</p>
+                
+                <div class="categories-grid">
+                    <div class="category-item">
+                        <input type="checkbox" id="categoriaSumo" name="categorias" value="sumo" class="category-checkbox">
+                        <label for="categoriaSumo">Sumo</label>
+                        <div class="category-tooltip">Robots que compiten para empujar al oponente fuera de un círculo. Requiere certificado de seguridad.</div>
+                    </div>
+                    
+                    <div class="category-item">
+                        <input type="checkbox" id="categoriaMinisumo" name="categorias" value="minisumo" class="category-checkbox">
+                        <label for="categoriaMinisumo">Minisumo</label>
+                        <div class="category-tooltip">Versión reducida del sumo robótico. Requiere certificado de seguridad.</div>
+                    </div>
+                    
+                    <div class="category-item">
+                        <input type="checkbox" id="categoriaCarrera" name="categorias" value="carrera" class="category-checkbox">
+                        <label for="categoriaCarrera">🏎️ Carrera</label>
+                        <div class="category-tooltip">Competencia de velocidad donde los robots siguen un circuito predefinido.</div>
+                    </div>
+                    
+                    <div class="category-item">
+                        <input type="checkbox" id="categoriaFutbol" name="categorias" value="futbol" class="category-checkbox">
+                        <label for="categoriaFutbol">⚽ Fútbol</label>
+                        <div class="category-tooltip">Equipos de robots que juegan al fútbol siguiendo reglas específicas.</div>
+                    </div>
+                    
+                    <div class="category-item">
+                        <input type="checkbox" id="categoriaLaberinto" name="categorias" value="laberinto" class="category-checkbox">
+                        <label for="categoriaLaberinto">Laberinto</label>
+                        <div class="category-tooltip">Robots que deben encontrar la salida de un laberinto en el menor tiempo posible.</div>
+                    </div>
+                    
+                    <div class="category-item">
+                        <input type="checkbox" id="categoriaMicrosumo" name="categorias" value="microsumo" class="category-checkbox">
+                        <label for="categoriaMicrosumo">Microsumo</label>
+                        <div class="category-tooltip">Versión más pequeña del sumo robótico.</div>
+                    </div>
+                </div>
+                
+                <div class="error-message" id="categorias-error">Debe seleccionar al menos una categoría.</div>
+            </div>
+
+            <!-- Documentación Técnica -->
+            <div class="form-section">
+                <h2>Documentación Técnica</h2>
+                
+                <div class="form-group">
+                    <label for="disenoRobot" class="required-label">Diseño del Robot (PDF/JPG/PNG, máx. 5MB)</label>
+                    <label for="disenoRobot" class="file-upload-label">
+                        <i class="fas fa-upload"></i> Subir diseño
+                    </label>
+                    <input type="file" id="disenoRobot" name="disenoRobot" accept=".pdf,.jpg,.jpeg,.png" required>
+                    <div class="file-preview" id="disenoPreview"></div>
+                    <div class="error-message" id="disenoRobot-error">Debe subir el diseño del robot (PDF/JPG/PNG, máx. 5MB).</div>
+                </div>
+
+                <div class="form-group" id="certificadoSeguridad-container">
+                    <label for="certificadoSeguridad" class="required-label">Certificado de Seguridad (PDF/JPG/PNG, máx. 2MB)</label>
+                    <label for="certificadoSeguridad" class="file-upload-label">
+                        <i class="fas fa-upload"></i> Subir certificado
+                    </label>
+                    <input type="file" id="certificadoSeguridad" name="certificadoSeguridad" accept=".pdf,.jpg,.jpeg,.png">
+                    <div class="file-preview" id="certificadoPreview"></div>
+                    <div class="error-message" id="certificadoSeguridad-error">El certificado de seguridad es obligatorio para las categorías Sumo y Minisumo.</div>
+                </div>
+
+                <div class="form-group">
+                    <div style="display: flex; align-items: center;">
+                        <input type="checkbox" id="aceptoReglas" name="aceptoReglas" required style="width: auto; margin-right: 10px;">
+                        <label for="aceptoReglas" class="required-label">Acepto las reglas del campeonato LNR</label>
+                    </div>
+                    <div class="error-message" id="aceptoReglas-error">Debes aceptar las reglas para participar.</div>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="buttons-container">
+                <button type="reset" id="resetButton">
+                    <i class="fas fa-trash"></i> Borrar Formulario
+                </button>
+                <button type="submit" id="submitButton" disabled>
+                    <i class="fas fa-robot"></i> Registrar Equipo
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Counter - Clickable para mostrar registros -->
+    <div class="counter" id="verRegistros">
+        <div class="counter-number" id="equiposCount">0</div>
+        <div class="counter-text">Equipos registrados</div>
+    </div>
+
+    <!-- Overlay para tabla de registros -->
+    <div class="overlay" id="registrosOverlay">
+        <button class="close-btn" id="closeRegistros">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="registros-container">
+            <h2>Equipos Registrados</h2>
+            <div id="registrosLoader" class="loader"></div>
+            <div id="registrosTablaContainer">
+                <table class="registros-table" id="registrosTabla">
+                    <thead>
+                        <tr>
+                            <th>Equipo</th>
+                            <th>Institución</th>
+                            <th>Email</th>
+                            <th>Categorías</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="registrosBody">
+                        <!-- Los registros se cargarán dinámicamente aquí -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="index.js"></script>
+     
